@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="fr">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perle du Sourire</title>
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+  
+  <style>
+    :root{--ink:#193936;--gold:#b58a4b;--cream:#f8f3ea;--line:#ded5c7}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink)}
+    .heading-font{font-family:"Playfair Display",serif}
+    .grain{background-image:radial-gradient(rgba(25,57,54,.08) .7px,transparent .7px);background-size:13px 13px}
+    .reveal{animation:rise .7s both}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .hero-orbit{animation:spin 20s linear infinite;transform-origin:center}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .before-clip{clip-path:inset(0 50% 0 0)}
+    .comparison-line{left:50%}
+    .service-card{transition:transform .25s ease,box-shadow .25s ease}
+    .service-card:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(25,57,54,.12)}
+    .tooth-button{transition:all .2s ease}
+    .tooth-button:hover,.tooth-button.is-active{fill:#b58a4b;stroke:#193936;transform:translateY(-3px)}
+    .modal-shell{opacity:0;pointer-events:none;transition:opacity .25s ease}
+    .modal-shell.is-open{opacity:1;pointer-events:auto}
+    .modal-card{transform:translateY(20px) scale(.98);transition:transform .25s ease}
+    .modal-shell.is-open .modal-card{transform:translateY(0) scale(1)}
+    .step-panel{display:none}
+    .step-panel.is-active{display:block;animation:rise .35s both}
+    .step-dot.is-current{background:#193936;color:#fff;border-color:#193936}
+    input,select{outline:none}
+    input:focus,select:focus{border-color:#b58a4b;box-shadow:0 0 0 3px rgba(181,138,75,.16)}
+    .focus-ring:focus-visible{outline:3px solid #b58a4b;outline-offset:3px}
+  </style>
+ </head>
+
+ <body class="w-full min-h-screen">
+
+  <!-- Header -->
+  <header class="w-full border-b border-[#ded5c7] bg-[#f8f3ea]/95 sticky top-0 z-30 backdrop-blur">
+   <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4" aria-label="Navigation principale">
+    <a href="#accueil" class="flex items-center gap-3 focus-ring rounded-lg">
+     <span class="w-10 h-10 rounded-full bg-[#193936] text-[#f8f3ea] flex items-center justify-center">
+      <i data-lucide="sparkles" class="w-5 h-5"></i>
+     </span>
+     <span class="font-bold text-lg">Perle du Sourire</span>
+    </a>
+    
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+     <a class="hover:text-[#b58a4b] focus-ring rounded" href="#services">Services</a>
+     <a class="hover:text-[#b58a4b] focus-ring rounded" href="#equipe">Équipe</a>
+     <a class="hover:text-[#b58a4b] focus-ring rounded" href="#contact">Contact</a>
+    </div>
+
+    <button type="button" data-booking-open class="bg-[#193936] text-white focus-ring rounded-full px-5 py-3 font-bold text-sm shadow-sm hover:brightness-95 transition">
+     Réserver un rendez-vous
+    </button>
+   </nav>
+  </header>
+
+  <main id="accueil">
+   <!-- Hero Section -->
+   <section class="grain w-full overflow-hidden bg-[#f8f3ea]">
+    <div class="max-w-7xl mx-auto px-5 py-12 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+     <div class="relative z-10">
+      <p class="inline-flex rounded-full border border-[#b58a4b] text-[#b58a4b] px-4 py-2 text-sm font-bold mb-6">
+       Cabinet Dentaire Esthétique
+      </p>
+      <h1 class="heading-font text-4xl lg:text-5xl font-bold leading-[1.08] max-w-xl text-[#193936]">
+       Révélez l'éclat de votre sourire
+      </h1>
+      <p class="mt-6 max-w-lg leading-8 text-gray-700">
+       Des soins dentaires de haute précision وdes traitements esthétiques avancés pour un sourire parfait et naturel.
+      </p>
+      
+      <div class="mt-8 flex flex-wrap gap-3">
+       <button type="button" data-booking-open class="bg-[#193936] text-white focus-ring rounded-full px-6 py-4 font-bold inline-flex items-center gap-2 shadow-lg transition hover:-translate-y-0.5">
+        <i data-lucide="calendar-days" class="w-5 h-5"></i> Réserver maintenant
+       </button>
+       <a href="#services" class="focus-ring rounded-full border border-[#193936] px-6 py-4 font-bold inline-flex items-center gap-2 hover:bg-[#193936] hover:text-white transition">
+        Découvrir <i data-lucide="arrow-down" class="w-5 h-5"></i>
+       </a>
+      </div>
+
+      <div class="mt-10 flex items-center gap-4">
+       <div class="flex -space-x-3">
+        <span class="w-9 h-9 rounded-full bg-[#d8c4a2] border-2 border-[#f8f3ea]"></span>
+        <span class="w-9 h-9 rounded-full bg-[#8aa39b] border-2 border-[#f8f3ea]"></span>
+        <span class="w-9 h-9 rounded-full bg-[#d68f75] border-2 border-[#f8f3ea]"></span>
+       </div>
+       <p class="text-sm font-semibold text-gray-700">Plus de 2,000+ patients satisfaits</p>
+      </div>
+     </div>
+
+     <!-- Hero Image Placeholders -->
+     <div class="relative reveal">
+      <div class="absolute -inset-6 rounded-[3rem] border border-[#b58a4b]/40 hero-orbit"></div>
+      <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+       <!-- 🖼️ صورة العيادة الرئيسيّة -->
+       <img src="images/hero-clinic.jpg" alt="Cabinet Dentaire" loading="lazy" class="w-full h-[430px] object-cover bg-gray-200">
+       <div class="absolute inset-x-5 bottom-5 bg-[#193936]/90 text-white p-5 rounded-2xl backdrop-blur">
+        <p class="font-bold">Une expérience moderne et confortable</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Stats Section -->
+   <section class="w-full bg-[#193936] text-white">
+    <div class="max-w-7xl mx-auto px-5 py-7 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+     <div>
+      <p class="text-3xl font-bold text-[#b58a4b]">15+</p>
+      <p class="text-sm text-[#e9dfce] mt-1">Années d'expérience</p>
+     </div>
+     <div class="border-y sm:border-y-0 sm:border-x border-white/20 py-5 sm:py-0">
+      <p class="text-3xl font-bold text-[#b58a4b]">99%</p>
+      <p class="text-sm text-[#e9dfce] mt-1">Satisfaction client</p>
+     </div>
+     <div>
+      <p class="text-3xl font-bold text-[#b58a4b]">100%</p>
+      <p class="text-sm text-[#e9dfce] mt-1">Soins personnalisés</p>
+     </div>
+    </div>
+   </section>
+
+   <!-- Services Section -->
+   <section id="services" class="w-full bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-5">
+     <div class="max-w-2xl mb-10">
+      <p class="font-bold text-sm tracking-wide text-[#b58a4b]">NOS PRESTATIONS</p>
+      <h2 class="heading-font text-3xl font-bold mt-3 leading-tight text-[#193936]">Des traitements adaptés à vos besoins</h2>
+      <p class="mt-4 leading-8 text-gray-600">Nous utilisons les dernières technologies pour vous offrir des résultats impeccables.</p>
+     </div>
+     
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <article class="service-card rounded-2xl p-6 border border-[#ded5c7]">
+       <i data-lucide="sparkle" class="w-7 h-7 text-[#b58a4b]"></i>
+       <h3 class="font-bold mt-6 text-lg">Blanchiment Dentaire</h3>
+       <p class="text-sm leading-7 mt-3 text-gray-600">Éclaircissement professionnel pour un sourire plus éclatant en une séance.</p>
+       <p class="mt-5 font-bold text-sm text-[#b58a4b]">À partir de 150€</p>
+      </article>
+
+      <article class="service-card rounded-2xl p-6 border border-[#ded5c7]">
+       <i data-lucide="gem" class="w-7 h-7 text-[#b58a4b]"></i>
+       <h3 class="font-bold mt-6 text-lg">Facettes Dentaires</h3>
+       <p class="text-sm leading-7 mt-3 text-gray-600">Correction sur-mesure de la forme, teinte et alignement de vos dents.</p>
+       <p class="mt-5 font-bold text-sm text-[#b58a4b]">Sur devis</p>
+      </article>
+
+      <article class="service-card rounded-2xl p-6 border border-[#ded5c7]">
+       <i data-lucide="scan-line" class="w-7 h-7 text-[#b58a4b]"></i>
+       <h3 class="font-bold mt-6 text-lg">Implants Dentaires</h3>
+       <p class="text-sm leading-7 mt-3 text-gray-600">Remplacement durable et esthétique des dents manquantes.</p>
+       <p class="mt-5 font-bold text-sm text-[#b58a4b]">Sur devis</p>
+      </article>
+
+      <article class="service-card rounded-2xl p-6 border border-[#ded5c7]">
+       <i data-lucide="heart-pulse" class="w-7 h-7 text-[#b58a4b]"></i>
+       <h3 class="font-bold mt-6 text-lg">Soins Préventifs</h3>
+       <p class="text-sm leading-7 mt-3 text-gray-600">Détartrage, nettoyage complet et bilan dentaire de routine.</p>
+       <p class="mt-5 font-bold text-sm text-[#b58a4b]">À partir de 60€</p>
+      </article>
+     </div>
+    </div>
+   </section>
+
+   <!-- Before/After Comparison Section -->
+   <section class="w-full bg-[#eee6d9] py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+     <div>
+      <p class="text-[#b58a4b] font-bold text-sm">RÉSULTATS VISIBLES</p>
+      <h2 class="heading-font text-3xl font-bold mt-3 leading-tight text-[#193936]">Avant & Après Traitement</h2>
+      <p class="leading-8 mt-5 text-gray-700">Glissez le curseur pour découvrir la transformation obtenue grâce à nos soins d'éclaircissement et de réhabilitation dentaire.</p>
+      <div class="mt-7 flex items-center gap-3 text-sm font-bold">
+       <span>Avant</span>
+       <span class="w-12 h-px bg-[#b58a4b]"></span>
+       <span>Après</span>
+      </div>
+     </div>
+     
+     <div class="relative rounded-[2rem] overflow-hidden shadow-xl aspect-[4/3] bg-[#193936]">
+      <!-- 🖼️ صورة بعد (After Image) -->
+      <img src="images/after-smile.jpg" alt="Après" loading="lazy" class="absolute inset-0 w-full h-full object-cover bg-gray-300">
+      
+      <!-- 🖼️ صورة قبل (Before Image) -->
+      <div id="beforeClip" class="before-clip absolute inset-0">
+       <img src="images/before-smile.jpg" alt="Avant" loading="lazy" class="w-full h-full object-cover bg-gray-400">
+      </div>
+      
+      <div id="comparisonLine" class="comparison-line absolute top-0 bottom-0 w-1 bg-white"></div>
+      <div id="comparisonHandle" class="comparison-line absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white text-[#193936] flex items-center justify-center shadow-lg">
+       <i data-lucide="move-horizontal" class="w-5 h-5"></i>
+      </div>
+      <label for="comparisonRange" class="sr-only">Comparaison Avant/Après</label> 
+      <input id="comparisonRange" type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize">
+     </div>
+    </div>
+   </section>
+
+   <!-- Team Section -->
+   <section id="equipe" class="w-full bg-[#f8f3ea] py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-5">
+     <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10">
+      <div>
+       <p class="text-[#b58a4b] font-bold text-sm">NOTRE ÉQUIPE</p>
+       <h2 class="heading-font text-3xl font-bold mt-3 text-[#193936]">Des experts à votre écoute</h2>
+      </div>
+      <p class="max-w-md leading-7 text-gray-600">Une équipe passionnée et diplômée pour vous garantir une prise en charge d'excellence.</p>
+     </div>
+     
+     <div class="grid md:grid-cols-2 gap-6">
+      <article class="bg-white rounded-[2rem] overflow-hidden border border-[#ded5c7] grid sm:grid-cols-2">
+       <!-- 🖼️ صورة الطبيب الأول -->
+       <img src="images/doctor-1.jpg" alt="Dr. Claire Dupont" loading="lazy" class="w-full h-64 sm:h-full object-cover bg-gray-200">
+       <div class="p-7">
+        <p class="text-[#b58a4b] text-sm font-bold">Chirurgien-Dentiste</p>
+        <h3 class="font-bold text-xl mt-2">Dr. Claire Dupont</h3>
+        <p class="text-sm leading-7 mt-4 text-gray-600">Spécialiste en esthétique dentaire et réhabilitation du sourire avec 12 ans d'expérience.</p>
+       </div>
+      </article>
+
+      <article class="bg-white rounded-[2rem] overflow-hidden border border-[#ded5c7] grid sm:grid-cols-2">
+       <!-- 🖼️ صورة الطبيب الثاني -->
+       <img src="images/doctor-2.jpg" alt="Dr. Marc Laurent" loading="lazy" class="w-full h-64 sm:h-full object-cover bg-gray-200">
+       <div class="p-7">
+        <p class="text-[#b58a4b] text-sm font-bold">Implantologue</p>
+        <h3 class="font-bold text-xl mt-2">Dr. Marc Laurent</h3>
+        <p class="text-sm leading-7 mt-4 text-gray-600">Expert en chirurgie orale et implants dentaires de haute précision.</p>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+
+   <!-- CTA Section -->
+   <section id="contact" class="w-full bg-[#193936] py-16">
+    <div class="max-w-5xl mx-auto px-5 text-center text-white">
+     <i data-lucide="heart-handshake" class="w-10 h-10 mx-auto text-[#e0c28e]"></i>
+     <h2 class="heading-font text-3xl font-bold mt-5">Prêt à sublimer votre sourire ?</h2>
+     <p class="text-[#e9dfce] mt-4">Prenez rendez-vous en ligne en moins de 2 minutes.</p>
+     <button type="button" data-booking-open class="bg-[#b58a4b] text-white focus-ring mt-7 rounded-full px-7 py-4 font-bold shadow-lg hover:brightness-95">
+      Prendre rendez-vous
+     </button>
+    </div>
+   </section>
+  </main>
+
+  <footer class="w-full bg-[#102927] text-[#e9dfce]">
+   <div class="max-w-7xl mx-auto px-5 py-6 flex flex-col sm:flex-row gap-3 justify-between text-sm">
+    <p>© 2026 Perle du Sourire. Tous droits réservés.</p>
+    <p>Ouvert du Lundi au Samedi : 09h00 - 19h00</p>
+   </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal-shell fixed inset-0 z-50 bg-[#102927]/70 p-4 flex items-center justify-center" role="dialog" aria-modal="true">
+   <div class="modal-card w-full max-w-lg rounded-[2rem] bg-[#f8f3ea] shadow-2xl overflow-hidden">
+    <div class="p-6 border-b border-[#ded5c7] flex items-start justify-between">
+     <div>
+      <p class="text-sm font-bold text-[#b58a4b]">RÉSERVATION EN LIGNE</p>
+      <h2 id="booking-title" class="font-bold text-[#193936] text-xl mt-1">Prendre rendez-vous</h2>
+     </div>
+     <button id="bookingClose" type="button" class="focus-ring w-10 h-10 rounded-full border border-[#ded5c7] flex items-center justify-center hover:bg-white">✕</button>
+    </div>
+    
+    <div class="px-6 pt-5 flex items-center gap-2">
+     <span class="step-dot is-current w-7 h-7 rounded-full border border-[#b58a4b] flex items-center justify-center text-xs font-bold">1</span> 
+     <span class="h-px flex-1 bg-[#ded5c7]"></span> 
+     <span class="step-dot w-7 h-7 rounded-full border border-[#b58a4b] flex items-center justify-center text-xs font-bold">2</span> 
+     <span class="h-px flex-1 bg-[#ded5c7]"></span> 
+     <span class="step-dot w-7 h-7 rounded-full border border-[#b58a4b] flex items-center justify-center text-xs font-bold">3</span>
+    </div>
+
+    <form id="bookingForm" class="p-6">
+     <section class="step-panel is-active" data-step="1">
+      <h3 class="font-bold text-[#193936]">Choisissez un service</h3>
+      <label class="block text-sm font-semibold mt-5 mb-2 text-gray-700" for="serviceSelect">Prestation souhaitée</label> 
+      <select id="serviceSelect" required class="w-full bg-white border border-[#ded5c7] rounded-xl px-4 py-3"> 
+       <option value="Blanchiment">Blanchiment Dentaire</option> 
+       <option value="Facettes">Facettes Dentaires</option> 
+       <option value="Implant">Implants Dentaires</option> 
+       <option value="Consultation">Consultation Générale</option> 
+      </select>
+      <p class="mt-4 text-sm rounded-xl bg-[#efe2cc] px-4 py-3 text-[#193936]">Le tarif final sera confirmé après la première consultation.</p>
+      <button type="button" data-next class="bg-[#193936] text-white mt-6 w-full rounded-xl py-3 font-bold hover:brightness-95">Étape suivante</button>
+     </section>
+
+     <section class="step-panel" data-step="2">
+      <h3 class="font-bold text-[#193936]">Vos coordonnées</h3>
+      <label class="block text-sm font-semibold mt-5 mb-2 text-gray-700" for="patientName">Nom complet</label> 
+      <input id="patientName" required type="text" placeholder="Jean Dupont" class="w-full bg-white border border-[#ded5c7] rounded-xl px-4 py-3"> 
+      
+      <label class="block text-sm font-semibold mt-4 mb-2 text-gray-700" for="patientPhone">Téléphone</label> 
+      <input id="patientPhone" required type="tel" placeholder="06 12 34 56 78" class="w-full bg-white border border-[#ded5c7] rounded-xl px-4 py-3">
+      
+      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+       <div>
+        <label class="block text-sm font-semibold mb-2 text-gray-700" for="appointmentDate">Date</label> 
+        <input id="appointmentDate" required type="date" class="w-full bg-white border border-[#ded5c7] rounded-xl px-4 py-3">
+       </div>
+       <div>
+        <label class="block text-sm font-semibold mb-2 text-gray-700" for="appointmentTime">Heure</label> 
+        <select id="appointmentTime" required class="w-full bg-white border border-[#ded5c7] rounded-xl px-4 py-3"> 
+         <option value="09:00">09:00</option> 
+         <option value="11:00">11:00</option> 
+         <option value="14:00">14:00</option> 
+         <option value="16:00">16:00</option> 
+        </select>
+       </div>
+      </div>
+      <div class="mt-6 grid grid-cols-2 gap-3">
+       <button type="button" data-back class="border border-[#193936] text-[#193936] rounded-xl py-3 font-bold">Retour</button> 
+       <button type="button" data-next class="bg-[#193936] text-white rounded-xl py-3 font-bold">Continuer</button>
+      </div>
+     </section>
+
+     <section class="step-panel" data-step="3">
+      <div class="w-12 h-12 rounded-full bg-[#dce7e1] text-[#193936] flex items-center justify-center">
+       <i data-lucide="check" class="w-6 h-6"></i>
+      </div>
+      <h3 class="font-bold mt-5 text-[#193936]">Confirmer la réservation</h3>
+      <p class="mt-3 leading-7 text-sm text-gray-600">Veuillez vérifier vos informations avant de valider votre rendez-vous.</p>
+      <div class="mt-6 grid grid-cols-2 gap-3">
+       <button type="button" data-back class="border border-[#193936] text-[#193936] rounded-xl py-3 font-bold">Retour</button> 
+       <button type="submit" class="bg-[#b58a4b] text-white rounded-xl py-3 font-bold">Confirmer</button>
+      </div>
+     </section>
+
+     <section id="bookingSuccess" class="hidden text-center py-8">
+      <i data-lucide="party-popper" class="w-10 h-10 text-[#b58a4b] mx-auto"></i>
+      <h3 class="font-bold mt-4 text-[#193936] text-xl">Rendez-vous confirmé !</h3>
+      <p class="mt-3 leading-7 text-sm text-gray-600">Nous vous avons envoyé un e-mail de confirmation avec tous les détails.</p>
+      <button type="button" id="successClose" class="bg-[#193936] text-white mt-6 rounded-xl px-6 py-3 font-bold">Fermer</button>
+     </section>
+    </form>
+   </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      const dateInput = document.getElementById("appointmentDate");
+      const now = new Date();
+      const localToday = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+      if (dateInput) dateInput.min = localToday;
+
+      const range = document.getElementById("comparisonRange");
+      const beforeClip = document.getElementById("beforeClip");
+      const line = document.getElementById("comparisonLine");
+      const handle = document.getElementById("comparisonHandle");
+
+      if (range) {
+        range.addEventListener("input", () => {
+          const value = range.value;
+          beforeClip.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+          line.style.left = value + "%";
+          handle.style.left = value + "%";
+        });
+      }
+
+      const modal = document.getElementById("bookingModal");
+      const form = document.getElementById("bookingForm");
+      const success = document.getElementById("bookingSuccess");
+      let step = 1;
+
+      const renderStep = () => {
+        document.querySelectorAll(".step-panel").forEach(panel => {
+          panel.classList.toggle("is-active", Number(panel.dataset.step) === step);
+        });
+        document.querySelectorAll(".step-dot").forEach((dot, index) => {
+          dot.classList.toggle("is-current", index + 1 === step);
+        });
+      };
+
+      const openModal = () => {
+        modal.classList.add("is-open");
+        form.reset();
+        if (dateInput) dateInput.min = localToday;
+        success.classList.add("hidden");
+        form.classList.remove("hidden");
+        step = 1;
+        renderStep();
+      };
+
+      const closeModal = () => modal.classList.remove("is-open");
+
+      document.querySelectorAll("[data-booking-open]").forEach(button => button.addEventListener("click", openModal));
+      document.getElementById("bookingClose")?.addEventListener("click", closeModal);
+      document.getElementById("successClose")?.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", event => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.querySelectorAll("[data-next]").forEach(button => {
+        button.addEventListener("click", () => {
+          const activePanel = document.querySelector(`.step-panel[data-step="${step}"]`);
+          const fields = activePanel.querySelectorAll("input, select");
+          const valid = [...fields].every(field => field.checkValidity());
+
+          if (!valid) {
+            [...fields].find(field => !field.checkValidity())?.reportValidity();
+            return;
+          }
+
+          if (step < 3) {
+            step += 1;
+            renderStep();
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-back]").forEach(button => {
+        button.addEventListener("click", () => {
+          if (step > 1) {
+            step -= 1;
+            renderStep();
+          }
+        });
+      });
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        form.classList.add("hidden");
+        success.classList.remove("hidden");
+      });
+    });
+  </script>
+ </body>
+</html>
